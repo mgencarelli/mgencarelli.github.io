@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Kelly and Matthew</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Matthew Gencarelli">
+    
+    
+    <script>
+    (function(doc) { 
+		doc.className = doc.className.replace(/(^|\b)no\-js(\b|$)/, 'js');
+    }(document.documentElement));
+    </script>
+
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://jdbartlett.com/innershiv/innershiv.js"></script>
+    <![endif]-->
+
+
+    <link rel="stylesheet" media="screen" href="/css/mosaiqy2.css" />
+    <style>
+        .mosaiqy li, .mosaiqy img {
+            height      : 180px;
+            width       : 180px;
+        }
+        
+        .mosaiqy li figcaption {
+            height      : 180px;
+            width       : 180px;
+        }
+        
+        figcaption strong {
+            display     : block;
+        }
+        .mosaiqy-zoom figcaption strong {
+            text-indent : 12px;
+        }
+    </style>
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- Fonts from Font Awsome -->
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+         <!-- Magnific popup -->
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <!-- Custom styles for this template -->
+
+        
+
+    </head>
+
+<body>
+
+        <section id="page-instagram" class="page-instagram">
+
+                <header class="section-header">
+                     
+                    <h2 class="section-title">#Gencarelli</h2>
+                        <div class="spacer"></div>
+                    <p class="section-subtitle">Tag pictures of us or any wedding festivities and they might just show up here!</p>
+                </header>
+    <div class="loading mosaiqy">
+        <ul></ul>
+    </div>
+    
+    
+    <!-- jquery & lib-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"> </script>
+    <script src="/js/mosaiqy-1.0.2.min.js" id="mosaiqy_tpl">     
+        <div>
+            <figure><a href="${images.standard_resolution.url}"><img src="${images.low_resolution.url}" longdesc="${link}">
+              <figcaption>${caption.text} <strong>(${user.username})</strong></figcaption></a>
+            </figure>
+        </div>
+    </script>
+    
+
+     <script>
+    $(document).ready(function() {
+        var instagramAPIDataUrl = "https://api.instagram.com/v1/tags/gencarelli/media/recent?client_id=330da25c726844fcbd37f8c560135034&callback=?";
+                
+        $.getJSON(instagramAPIDataUrl, function(instagramJSON) {
+                
+            $('.mosaiqy').mosaiqy({
+                template        : 'mosaiqy_tpl',
+                rows            : 3,
+                cols            : 4,
+                avoidDuplicates : true,
+                animationDelay  : 1500,
+                loop            : true,
+                data            : instagramJSON.data
+            });            
+            
+        });        
+    });
+    </script>
+    </section>
+            <section id="page-team" class="page-team">
+       <div class="container">
+                <header class="section-header">
+                    <h2 class="section-title"><span>RSVP</span></h2>
+                     <div class="spacer"></div>
+                    <p class="section-subtitle">Invitations forthcoming</p><br></br>
+                </header>
+ <!--          
+        <div id="rsvp_main">
+                        <form id="code_input_container" onsubmit="return false;"> 
+
+                           <label class="text_label">Unique Code (see back of invitation)</label>
+                            <input id="code_input" class="textform" type="text" > 
+                            <div id="feedback"></div>
+                            <input class="button" id="code_submit" type="button" value="Submit" onClick="rsvpInput()">
+                        </form>
+                        <form class="rsvp_plusone" action="xxx" method="POST" id="ss-form" target="_new" onsubmit="">
+                            <div class="checkbox_wrapper">
+                                <input type="radio" name="entry.1318585905" value="Yes, I can make it" id="group_1318585905_1" class="Checkbox" aria-label="Yes, I can make it" required=""><label></label>
+                                <label class="checkbox_label">Yes, I'll be there!</label>
+                            </div>
+                            <div class="checkbox_wrapper">
+                                <input type="radio" name="entry.1318585905" value="No, I can&#39;t make it" id="group_1318585905_2" class="checkbox" aria-label="No, I can&#39;t make it" required=""><label></label>
+                                <label class="checkbox_label">No, I can't make it.</label>
+                            </div>
+                            <label class="text_label">Your Name</label>
+                            <input type="text" name="entry.1451604733" value="" class="textform" id="entry_1451604733" dir="auto" aria-required="true" required="" title="">
+
+                            <div class="checkbox_wrapper" style="width:80%">
+                                <input type="checkbox" name="entry.1661011527" value="I will be bringing a guest" id="group_1661011527_1" class="checkbox"><label></label>
+                                <label class="checkbox_label">I will be bringing a guest</label>
+                            </div>
+
+                            <label class="text_label">Guest's Name</label>
+                            <input type="text" name="entry.231921138" value="" class="textform" id="entry_231921138" dir="auto" title="">
+
+                            <input class="button" type="submit" name="submit" value="RSVP" id="ss-submit">
+                        </form>
+                        <form class="rsvp_single" action="https://docs.google.com/forms/d/1NERzMa_EpVIXrJJyH6WeAVZi46_Girsxx3bZuSuIm44/formResponse" method="POST" id="ss-form" target="_new" onsubmit="">
+                            <div class="checkbox_wrapper">
+                                <input type="radio" name="entry.1644568023" value="Yes, I can make it." id="group_1644568023_1" class="checkbox" aria-label="Yes, I can make it." required=""><label></label>
+                                <label class="checkbox_label">Yes, I'll be there!</label>
+                            </div>
+                            <div class="checkbox_wrapper">    
+                                <input type="radio" name="entry.1644568023" value="No, I can&#39;t make it." id="group_1644568023_2" class="checkbox" aria-label="No, I can&#39;t make it." required=""><label></label>
+                                <label class="checkbox_label">No, I can't make it.</label>
+                            </div>
+
+                            <label class="text_label" for="entry_1728411549">Your full name</label>
+                            <input type="text" name="entry.445624177" value="" class="textform" id="entry_445624177" dir="auto" aria-required="true" required="" title="">
+
+                            <input class="button" type="submit" name="submit" value="RSVP" id="ss-submit">
+                            <p></p>
+                        </form><div class="wrapper"></div> 
+                    </div>
+           
+
+           
+           
+         </div>
+         -->
+
+    </section><!-- team ends -->
+        
+        
+     <!-- parallax connect feed begins -->
+            <section id="parallax-connect" class="parallax">
+                <div class="parallax-background2 parallax-background"></div><!-- parallax bg image -->
+                <div class="overlay"></div>
+                <div class="container">
+                  <div class="row">
+                      <div class="col-md-12">
+                        <div class="parallax-content">
+                          
+                      <br></br><br></br>
+                            <blockquote>
+                                Thank you for visiting our website! If you have any questions please let us know.  We can't wait until June 27th!
+                              <footer>- Kelly and Matthew</footer>
+                          </blockquote>
+                            
+                        
+                         
+                            
+                        </div>
+                      </div>
+                  </div>
+                </div>
+            </section><!-- parallax connect feed ends -->
+        <!-- pricing begins -->
+    <section id="page-pricing" class="page-pricing">
+      <div class="container">
+                <header class="section-header">
+                     
+                    <h2 class="section-title">Registry</h2>
+                   </header>
+                    <div class="spacer"></div>
+                    <header class="process-header">
+                        <br><p>What we want most for our wedding is to have all of our friends and family together. More than anything, we consider your presence to be our present. If you'd like to get us something tangible, we are registered at the following:</p>
+                    </header>
+          <header class="section-header">
+          <div class="row">    
+              <!--<div class="col-xs-4" vcenter>
+<a href="http://www.potterybarn.com/registry/3632975/registry-list.html" target="new"><img src="img/potterybarn.jpg" alt=""</a>
+          </div>-->
+                  <div class="col-xs-6" vcenter>
+<a href="https://www.anthropologie.com/anthro/registry/index.jsp#/listing?registryId=ZTJHYWZKNGEZ" target="new"><img src="img/anthro.jpg" alt=""></a>
+                  </div>
+                  <div class="col-xs-6" vcenter>
+<a href="http://www.crateandbarrel.com/Gift-Registry/matthew-gencarelli/r5273430" target="new"><img src="img/crateandbarrel.jpg" alt=""></a>
+                  </div></div>
+                  <div class="row">
+                 
+                      <div class="col-xs-6" vcenter>
+<a href="http://www.amazon.com/registry/wedding/1QSS7582LXADY" target="new"><img src="img/amazon.jpg" alt=""></a>
+          </div> 
+                      <div class="col-xs-6" vcenter>
+                      <a href="https://secure.williams-sonoma.com/registry/59jkgqkwpm/registry-list.html" target="new"><img src="img/ws.jpg" alt=""></a></div>
+
+                  
+                    
+                        </div>   
+             
+           </header>  
+             
+        
+ 
+      </div> 
+    </section><!-- pricing ends -->
+    <!-- contact begins -->
+     <section id="page-contact" class="page-contact">
+    <p align="center">Website built by Matthew.</p>
+    
+              
+        
+
+        </div>
+    </section> <!-- contact ends -->
+
+
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.queryloader2.min.js"></script>
+        <script src="js/jquery.parallax-1.1.3.js"></script>
+        <script src="js/jquery.flexslider.js"></script>
+        <script src="js/jquery.scrollTo.js"></script>
+        <script src="js/jquery.nav.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/jquery.vegas.min.js"></script>
+        <script src="js/jquery.isotope.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/jquery.validate.js"></script>
+        <script src="js/jquery.countTo.js"></script>
+        <script src="js/waypoints.min.js"></script>
+        <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
+
+
+    </body>
+</html>
+    
+</body>
+</html>
