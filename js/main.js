@@ -263,30 +263,35 @@ function rsvpInput()
 (function (e) {
 	e.fn.countdown = function (t, n) {
 	function i() {
-		eventDate = Date.parse(r.date) / 1e3;
-		currentDate = Math.floor(e.now() / 1e3);
+		currentDate = Date.parse(r.date) / 1e3;
+		eventDate = Math.floor(e.now() / 1e3);
 		if (eventDate <= currentDate) {
 			n.call(this);
 			clearInterval(interval)
 		}
 		seconds = eventDate - currentDate;
+        years = Math.floor(seconds / 31536000);
+		seconds -= years * 60 * 60 * 24 * 365;
 		days = Math.floor(seconds / 86400);
 		seconds -= days * 60 * 60 * 24;
 		hours = Math.floor(seconds / 3600);
 		seconds -= hours * 60 * 60;
 		minutes = Math.floor(seconds / 60);
 		seconds -= minutes * 60;
+        years == 1 ? thisEl.find(".timeRefYears").text("year") : thisEl.find(".timeRefYears").text("years");
 		days == 1 ? thisEl.find(".timeRefDays").text("day") : thisEl.find(".timeRefDays").text("days");
 		hours == 1 ? thisEl.find(".timeRefHours").text("hour") : thisEl.find(".timeRefHours").text("hours");
 		minutes == 1 ? thisEl.find(".timeRefMinutes").text("minute") : thisEl.find(".timeRefMinutes").text("minutes");
 		seconds == 1 ? thisEl.find(".timeRefSeconds").text("second") : thisEl.find(".timeRefSeconds").text("seconds");
 		if (r["format"] == "on") {
+            years = String(years).length >= 2 ? years : "0" + years;
 			days = String(days).length >= 2 ? days : "0" + days;
 			hours = String(hours).length >= 2 ? hours : "0" + hours;
 			minutes = String(minutes).length >= 2 ? minutes : "0" + minutes;
 			seconds = String(seconds).length >= 2 ? seconds : "0" + seconds
 		}
 		if (!isNaN(eventDate)) {
+            thisEl.find(".years").text(years);
 			thisEl.find(".days").text(days);
 			thisEl.find(".hours").text(hours);
 			thisEl.find(".minutes").text(minutes);
@@ -321,3 +326,34 @@ function rsvpInput()
 		format: "on"
 	});
 });
+
+/*==========================================================================
+Count up timer
+========================================================================== */ 
+
+window.onload=function() {
+  // Month,Day,Year,Hour,Minute,Second
+  upTime('jan,27,2018,00:00:00'); // ****** Change this line!
+};
+function upTime(countTo) {
+  now = new Date();
+  countTo = new Date(countTo);
+  difference = (now-countTo);
+    
+  
+    
+  days=Math.floor(difference/(60*60*1000*24)*1);
+  years = Math.floor(days / 365);
+  if (years > 1){ days = days - (years * 365)}
+  hours=Math.floor((difference%(60*60*1000*24))/(60*60*1000)*1);
+  mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+  secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+  document.getElementById('years').firstChild.nodeValue = years;
+  document.getElementById('days').firstChild.nodeValue = days;
+  document.getElementById('hours').firstChild.nodeValue = hours;
+  document.getElementById('minutes').firstChild.nodeValue = mins;
+  document.getElementById('seconds').firstChild.nodeValue = secs;
+
+  clearTimeout(upTime.to);
+  upTime.to=setTimeout(function(){ upTime(countTo); },1000);
+}
